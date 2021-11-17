@@ -3,7 +3,6 @@ import requests
 import string
 
 movie_list = []
-content_dict = {}
 
 with open('movies.txt') as file:
     for movie in file:
@@ -15,6 +14,8 @@ with open('movies.txt') as file:
         soup = BeautifulSoup(r.content, 'html5lib')
 
         table = soup.find('table', attrs={'class': 'infobox vevent'})
+
+        content_dict = {}
 
         # getting name of the movie
 
@@ -60,3 +61,14 @@ with open('movies.txt') as file:
         movie_list.append(content_dict)
 
 print(movie_list)
+
+import csv
+
+fields = ['Movie', 'Director', 'Release Date', 'Overall Gross Earnings', 'Cast']
+
+with open('output.csv', 'w', encoding='utf-8') as file:
+    writer = csv.DictWriter(file, fieldnames=fields)
+
+    writer.writeheader()
+
+    writer.writerows(movie_list)
