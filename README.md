@@ -1,5 +1,5 @@
 # movie_scraper
-Scrapes the wikipedia pages for movies and their details
+Scrapes info from the corresponding Wikipedia pages for the given movies.
 
 Run movie_scraper.py to scrape the following data from Wikipedia for the movie names in movies.txt:
 1. The movie name
